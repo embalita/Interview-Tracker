@@ -5,6 +5,19 @@ import Modal from './Modal.jsx';
 import Step from './Step.jsx';
 import { UserContext } from '../App.jsx';
 
+const appStatusLabel = {
+  1: 'Not Applied',
+  2: 'Applied',
+  3: 'Phone Screening', 
+  4: 'Technical Interview',
+  5: 'Interviewing',
+  6: 'Offer Received',
+  7: 'Offer Accepted',
+  8: 'Offer Rejected',
+  9: 'Application Rejected',
+  10: 'Not Interested'
+}
+
 const Dashboard = () => {
   let history = useHistory();
   const [tracker, setTracker] = useState([]);
@@ -119,7 +132,7 @@ const Dashboard = () => {
               <td className="low-priority-col" id="notes-column">
                 {notes}
               </td>
-              <td>{app_status}</td>
+              <td>{appStatusLabel[app_status]}</td>
               <td className="operation">
                 <button
                   className="deleteButton"
@@ -137,7 +150,7 @@ const Dashboard = () => {
                 <Link
                   to={{
                     pathname: `/application/${id}/step`,
-                    state: { appId: id },
+                    state: { application : tracker[index] },
                   }}
                 >
                   <button
@@ -145,7 +158,7 @@ const Dashboard = () => {
                     className="editStep"
                     // onClick={changeRoute} id={id}
                   >
-                    Add step
+                    View progress
                   </button>
                 </Link>
               </td>
@@ -168,7 +181,9 @@ const Dashboard = () => {
               </thead>
               <tbody>{renderBody()}</tbody>
             </table>
-            <button onClick={() => history.goBack()}>Sign out</button>
+            <button onClick={() => {
+              context.saveUser(null)
+              history.goBack()}}>Sign out</button>
 
             <button onClick={() => setShowModal({ action: 'add', id: null })}>
               Add new application

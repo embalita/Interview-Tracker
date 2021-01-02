@@ -102,10 +102,10 @@ const ModalStep = ({
             />
           </label>
           <label>
-            Step Type
+            Progess
             <input
               type="text"
-              placeholder="step_type"
+              placeholder="e.g. interview, screening, offer"
               id="step_type"
               value={step_type}
               onChange={(e) => setStepType(e.target.value)}
@@ -113,10 +113,10 @@ const ModalStep = ({
             />
           </label>
           <label>
-            Contact Information
+            Contact Name
             <input
               type="text"
-              placeholder="contact information"
+              // placeholder="contact information"
               id="contact_name"
               value={contact_name}
               onChange={(e) => setContactName(e.target.value)}
@@ -127,7 +127,7 @@ const ModalStep = ({
             Contact Role
             <input
               type="text"
-              placeholder="contact role"
+              placeholder="e.g. HR representative, manager"
               id="contact_role"
               value={contact_role}
               onChange={(e) => setContractRole(e.target.value)}
@@ -138,7 +138,7 @@ const ModalStep = ({
             Contact
             <input
               type="text"
-              placeholder="contact"
+              placeholder="e.g. phone number or email"
               id="contact"
               value={contact}
               onChange={(e) => setContact(e.target.value)}
@@ -149,7 +149,7 @@ const ModalStep = ({
             Notes
             <input
               type="text"
-              placeholder="notes"
+              // placeholder="notes"
               id="notes"
               value={notes}
               onChange={(e) => setNote(e.target.value)}
