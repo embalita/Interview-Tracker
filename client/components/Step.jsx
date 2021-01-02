@@ -23,7 +23,7 @@ const Steps = () => {
 
   const fetchStep = async () => {
     const resp = await fetch(
-      `/user/${context.user.id}/application/${state.appId}/step`,
+      `/user/${context.user.id}/application/${state.application.id}/step`,
       {
         method: 'GET',
         headers: { 'content-type': 'application/JSON' },
@@ -60,13 +60,13 @@ const Steps = () => {
     let headerElement = [
       // 'id',
       // 'app id',
-      'date',
-      'step_type',
-      'contact_name',
-      'contact_role',
-      'contact',
-      'notes',
-      'modify',
+      'Date',
+      'Progress',
+      'Contact Name',
+      'Contact Role',
+      'Contact Method',
+      'Notes',
+      'Modify',
     ];
 
     //now we will map over these values and output as th
@@ -125,13 +125,16 @@ const Steps = () => {
 
   return (
     <>
-      <h1 id="title">Applications Steps</h1>
+      <h1 id="title">Application Progress</h1>
+  <p>{state.application.job_title} at {state.application.company} in {state.application.location}</p>
+      <div className="tableContainer">
       <table id="stepTracker">
         <thead>
           <tr>{renderHeader()}</tr>
         </thead>
         <tbody>{renderBody()}</tbody>
       </table>
+      </div>
 
       {showModalStep.action ? (
         <ModalStep
@@ -141,12 +144,12 @@ const Steps = () => {
           currentStep={
             showModalStep.action === 'edit' ? stepTracker[showModalStep.id] : {}
           }
-          appId={state.appId}
+          appId={state.application.id}
           setUpdateState={setUpdateState}
         />
       ) : (
         <button
-          onClick={() => setShowModalStep({ action: 'add', id: state.appId })}
+          onClick={() => setShowModalStep({ action: 'add', id: state.application.id })}
         >
           Add new step
         </button>
