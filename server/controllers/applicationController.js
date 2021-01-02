@@ -38,7 +38,7 @@ applicationController.addApp = (req, res, next) => {
     notes,
     app_status,
   } = req.body;
-
+  console.log('app req body', req.body);
   const addApp =
     'INSERT INTO applications (job_seeker_id, company, job_title, how_applied, date_applied, location, found_by, notes, app_status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
 

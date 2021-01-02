@@ -19,7 +19,7 @@ const Modal = ({ setShowModal, action, currentApp, setUpdateState }) => {
   const [location, setLocation] = useState(currentApp.location || '');
   const [found_by, setFoundBy] = useState(currentApp.found_by || '');
   const [notes, setNotes] = useState(currentApp.notes || '');
-  const [app_status, setAppStatus] = useState(currentApp.app_status || '');
+  const [app_status, setAppStatus] = useState(currentApp.app_status || 1);
 
   //   const fakeUID = 2;
 
